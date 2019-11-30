@@ -6,6 +6,8 @@ WORKDIR /service1
 COPY package.json /service1
 RUN npm install
 
+COPY . /service1
+
 EXPOSE 5000
 
 CMD [ "nodemon", "server.js" ]
