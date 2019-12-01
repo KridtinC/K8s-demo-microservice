@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/service3/minus', (req, res) => {
     console.log('minus-server3')
     options = {
-        url: 'http://127.0.0.1:5003/service4/minus',
+        url: 'http://service4:5003/service4/minus',
         method: 'POST',
         json: {
             param1: req.body['param1'],

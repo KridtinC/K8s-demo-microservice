@@ -31,7 +31,7 @@ app.post('/service4/minus', (req, res) => {
 app.post('/service4/divide', (req, res) => {
     console.log('divide-server4')
     options = {
-        url: 'http://127.0.0.1:5002/service3/divide',
+        url: 'http://service3:5002/service3/divide',
         method: 'POST',
         json: {
             param1: req.body['param1'],
