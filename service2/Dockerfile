@@ -1,4 +1,4 @@
-FROM node:10
+FROM arm32v7/node:10
 
 RUN mkdir -p /service2
 WORKDIR /service2
