@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-demo
+  labels:
+   app: k8s-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: k8s-demo
+  template:
+    metadata:
+      labels:
+        app: k8s-demo
+    spec:
+      containers:
+      - name: k8s-demo-service1
+        image: kantlove/k8s-demo-service1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+      - name: k8s-demo-service2
+        image: kantlove/k8s-demo-service2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
+          protocol: TCP
+      - name: k8s-demo-service3
+        image: kantlove/k8s-demo-service3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5002
+          protocol: TCP
+      - name: k8s-demo-service4
+        image: kantlove/k8s-demo-service4
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5003
+          protocol: TCP
