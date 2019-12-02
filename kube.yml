@@ -11,18 +11,6 @@ spec:
       protocol: TCP
       targetPort: 5000
       nodePort: 31118
-    - port: 8081
-      protocol: TCP
-      targetPort: 5001
-      nodePort: 31119
-    - port: 8082
-      protocol: TCP
-      targetPort: 5002
-      nodePort: 31120
-    - port: 8083
-      protocol: TCP
-      targetPort: 5003
-      nodePort: 31121
   selector:
     app: k8s-demo
 ---
