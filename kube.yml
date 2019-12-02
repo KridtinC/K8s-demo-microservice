@@ -1,3 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-demo
+  labels:
+    app: k8s-demo
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 5000
+      nodePort: 31118
+    - port: 8081
+      protocol: TCP
+      targetPort: 5001
+      nodePort: 31119
+    - port: 8082
+      protocol: TCP
+      targetPort: 5002
+      nodePort: 31120
+    - port: 8083
+      protocol: TCP
+      targetPort: 5003
+      nodePort: 31121
+  selector:
+    app: k8s-demo
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
