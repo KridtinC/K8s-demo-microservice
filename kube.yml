@@ -21,7 +21,7 @@ metadata:
   labels:
    app: k8s-demo
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: k8s-demo
@@ -37,21 +37,21 @@ spec:
         ports:
         - containerPort: 5000
           protocol: TCP
-      - name: k8s-demo-service2
-        image: kantlove/k8s-demo-service2
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 5001
-          protocol: TCP
-      - name: k8s-demo-service3
-        image: kantlove/k8s-demo-service3
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 5002
-          protocol: TCP
-      - name: k8s-demo-service4
-        image: kantlove/k8s-demo-service4
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 5003
-          protocol: TCP
+      # - name: k8s-demo-service2
+      #   image: kantlove/k8s-demo-service2
+      #   imagePullPolicy: Always
+      #   ports:
+      #   - containerPort: 5001
+      #     protocol: TCP
+      # - name: k8s-demo-service3
+      #   image: kantlove/k8s-demo-service3
+      #   imagePullPolicy: Always
+      #   ports:
+      #   - containerPort: 5002
+      #     protocol: TCP
+      # - name: k8s-demo-service4
+      #   image: kantlove/k8s-demo-service4
+      #   imagePullPolicy: Always
+      #   ports:
+      #   - containerPort: 5003
+      #     protocol: TCP
