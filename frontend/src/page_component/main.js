@@ -1,55 +1,89 @@
-import React,{Component} from 'react'
+import React, { Component } from 'react'
 import blackpink from './blackpink.jpg'
-export class main extends Component{
-    constructor(){
+export class main extends Component {
+    constructor() {
         super();
-        this.CallAPI = this.CallAPI.bind(this);
+        this.state = {
+            param1: null,
+            param2: null,
+            operation: null
+        };
     }
 
-    async CallAPI(a){
-        try{
+    handleChange = ({ target }) => {
+        this.setState({
+            [target.name]: target.value
+        });
+    }
+
+    publish = async () => {
+        try {
+            var url = ''
+            console.log('call_api')
             const data = {
-                param1: 1,
-                param2: 2
+                param1: parseInt(this.state.param1),
+                param2: parseInt(this.state.param2)
             };
-            const response = await fetch("http://service1:5000/service1/plus",{
-                method:"POST",
-                headers:{ "Content-Type":"application/json"},
+            console.log(data)
+            const response = await fetch('http://gateway:5004/gateway/' + this.state.operation, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             });
             console.log(response)
-        } catch(error){
-            console.log("Call API failed ",error)
+        } catch (error) {
+            console.log("Call API failed ", error)
         }
 
         return 1;
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                <h1 style={{textAlign:'center'}}>Here are 4 buttons</h1>
-                <div style={{textAlign:'center'}}>
-                    <button style={buttonStyle} onClick={this.CallAPI}>1</button>
-                    <button style={buttonStyle}>2</button>
-                    <button style={buttonStyle}>3</button>
-                    <button style={buttonStyle}>4</button>
+                <h1 style={{ textAlign: 'center' }}>Here are 4 buttons</h1>
+                <div style={{ textAlign: 'center' }}>
+                    <input
+                        type="text"
+                        name="param1"
+                        placeholder="Param1"
+                        value={this.state.param1}
+                        onChange={this.handleChange}
+                    />
+
+                    <input
+                        type="text"
+                        name="param2"
+                        placeholder="Param2"
+                        value={this.state.param2}
+                        onChange={this.handleChange}
+                    />
+
+                    <input
+                        type="text"
+                        name="operation"
+                        placeholder="operation"
+                        value={this.state.operation}
+                        onChange={this.handleChange}
+                    />
+
+                    <button value="Send" onClick={this.publish}>Publish</button>
                 </div>
 
-                <h1 style={{textAlign:'center'}}>....and here is BLACKPINK</h1>
+                {/* <h1 style={{textAlign:'center'}}>....and here is BLACKPINK</h1>
 
                 <div style={{display: "flex",justifyContent: 'center',alignItems: 'center'}}>
                     <img src={blackpink} alt='' style={{height:'400px'}}/>
                     
-                </div>
-                
-                
+                </div> */}
+
+
             </div>
-    
+
         );
 
     }
-    
+
 }
 const buttonStyle = {
     textAlign: "center",

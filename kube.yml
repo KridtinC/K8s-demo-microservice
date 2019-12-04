@@ -9,7 +9,7 @@ spec:
   ports:
     - port: 8080
       protocol: TCP
-      targetPort: 5000
+      targetPort: 3000
       nodePort: 31118
   selector:
     app: k8s-demo
@@ -31,18 +31,30 @@ spec:
         app: k8s-demo
     spec:
       containers:
+      - name: k8s-demo-frontend
+        image: kantlove/k8s-demo-frontend
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+          protocol: TCP
       - name: k8s-demo-service1
         image: kantlove/k8s-demo-service1
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
           protocol: TCP
-      # - name: k8s-demo-service2
-      #   image: kantlove/k8s-demo-service2
-      #   imagePullPolicy: Always
-      #   ports:
-      #   - containerPort: 5001
-      #     protocol: TCP
+      - name: k8s-demo-service2
+        image: kantlove/k8s-demo-service2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
+          protocol: TCP
+      - name: k8s-demo-gateway
+        image: kantlove/k8s-demo-gateway
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5004
+          protocol: TCP
       # - name: k8s-demo-service3
       #   image: kantlove/k8s-demo-service3
       #   imagePullPolicy: Always

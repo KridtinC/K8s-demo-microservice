@@ -22,17 +22,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/service1/plus', (req, res) => {
     console.log('plus-server1')
-    // options = {
-    //     url: 'http://service2:5001/service2/plus',
-    //     method: 'POST',
-    //     json: {
-    //         param1: req.body['param1'],
-    //         param2: req.body['param2']
-    //     }
-    // }
-    // request.post(options, function(error, response, body) {
-    //     return res.send({result: body['result']})
-    //   })
+    options = {
+        url: 'http://service2:5001/service2/plus',
+        method: 'POST',
+        json: {
+            param1: req.body['param1'],
+            param2: req.body['param2']
+        }
+    }
+    request.post(options, function(error, response, body) {
+        return res.send({result: body['result']})
+      })
 })
 
 app.post('/service1/multiply', (req, res) => {

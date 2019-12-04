@@ -13,11 +13,12 @@
     "concurrently": "^4.1.2"
   },
   "scripts": {
-    "start": "concurrently --kill-others-on-fail \"npm run server1\" \"npm run server2 \" \"npm run server3 \" \"npm run server4 \" \"npm run client\"",
+    "start": "concurrently --kill-others-on-fail \"npm run server1\" \"npm run server2 \" \"npm run server3 \" \"npm run server4 \" \"npm run gateway \" \"npm run client\"",
     "server1": "cd service1 && nodemon server.js",
     "server2": "cd service2 && nodemon server.js",
     "server3": "cd service3 && nodemon server.js",
     "server4": "cd service4 && nodemon server.js",
+    "gateway": "cd gateway && nodemon server.js",
     "client": "cd frontend && npm start"
   },
   "eslintConfig": {
