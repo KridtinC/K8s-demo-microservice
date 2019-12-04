@@ -8,26 +8,32 @@ spec:
   type: NodePort
   ports:
     - port: 3000
+      name: k8s-demo-frontend
       protocol: TCP
       targetPort: 3000
       nodePort: 31118
     - port: 5000
+      name: k8s-demo-service1
       protocol: TCP
       targetPort: 5000
       nodePort: 31119
     - port: 5001
+      name: k8s-demo-service2
       protocol: TCP
       targetPort: 5001
       nodePort: 31120
     - port: 5002
+      name: k8s-demo-service3
       protocol: TCP
       targetPort: 5002
       nodePort: 31121
     - port: 5003
+      name: k8s-demo-service4
       protocol: TCP
       targetPort: 5003
       nodePort: 31122
     - port: 5004
+      name: k8s-demo-gateway
       protocol: TCP
       targetPort: 5004
       nodePort: 31123
