@@ -25,12 +25,17 @@ export class main extends Component {
                 param2: parseInt(this.state.param2)
             };
             console.log(data)
-            const response = await fetch('http://gateway:5004/gateway/' + this.state.operation, {
+            const response = await fetch('http://192.168.99.92:5004/gateway/' + this.state.operation, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             });
-            console.log(response)
+            const results = await response.json();
+            console.log(results)
+            this.setState({
+                result: results['result']
+            })
+            console.log(this.state)
         } catch (error) {
             console.log("Call API failed ", error)
         }

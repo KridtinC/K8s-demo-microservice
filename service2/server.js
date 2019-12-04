@@ -31,7 +31,7 @@ app.post('/service2/plus', (req, res) => {
 app.post('/service2/multiply', (req, res) => {
     console.log('multiply-server2')
     options = {
-        url: 'http://service1:5000/service1/multiply', 
+        url: 'http://192.168.99.92:5000/service1/multiply', 
         method: 'POST',
         json: {
             param1: req.body['param1'],

@@ -8,11 +8,18 @@ const request = require('request')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(function(req,res,next){
+    // Allow access from other domain
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.post('/gateway/plus', (req, res) => {
     console.log('plus-gateway')
     console.log(req.body)
     options = {
-        url: 'http://service1:5000/service1/plus',
+        url: 'http://192.168.99.92:5000/service1/plus',
         method: 'POST',
         json: {
             param1: req.body['param1'],
@@ -25,7 +32,7 @@ app.post('/gateway/plus', (req, res) => {
 app.post('/gateway/multiply', (req, res) => {
     console.log('multiply-gateway')
     options = {
-        url: 'http://service2:5001/service2/multiply',
+        url: 'http://192.168.99.92:5001/service2/multiply',
         method: 'POST',
         json: {
             param1: req.body['param1'],
@@ -38,7 +45,7 @@ app.post('/gateway/multiply', (req, res) => {
 app.post('/gateway/minus', (req, res) => {
     console.log('minus-gateway')
     options = {
-        url: 'http://service3:5002/service3/minus',
+        url: 'http://192.168.99.92:5002/service3/minus',
         method: 'POST',
         json: {
             param1: req.body['param1'],
@@ -51,7 +58,7 @@ app.post('/gateway/minus', (req, res) => {
 app.post('/gateway/divide', (req, res) => {
     console.log('divide-gateway')
     options = {
-        url: 'http://service4:5003/service4/divide',
+        url: 'http://192.168.99.92:5003/service4/divide',
         method: 'POST',
         json: {
             param1: req.body['param1'],
