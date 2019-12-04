@@ -19,7 +19,7 @@ app.post('/gateway/plus', (req, res) => {
     console.log('plus-gateway')
     console.log(req.body)
     options = {
-        url: 'http://192.168.99.92:5000/service1/plus',
+        url: 'http://192.168.99.92:31119/service1/plus',
         method: 'POST',
         json: {
             param1: req.body['param1'],
@@ -32,7 +32,7 @@ app.post('/gateway/plus', (req, res) => {
 app.post('/gateway/multiply', (req, res) => {
     console.log('multiply-gateway')
     options = {
-        url: 'http://192.168.99.92:5001/service2/multiply',
+        url: 'http://192.168.99.92:31120/service2/multiply',
         method: 'POST',
         json: {
             param1: req.body['param1'],
@@ -45,7 +45,7 @@ app.post('/gateway/multiply', (req, res) => {
 app.post('/gateway/minus', (req, res) => {
     console.log('minus-gateway')
     options = {
-        url: 'http://192.168.99.92:5002/service3/minus',
+        url: 'http://192.168.99.92:31121/service3/minus',
         method: 'POST',
         json: {
             param1: req.body['param1'],
@@ -58,7 +58,7 @@ app.post('/gateway/minus', (req, res) => {
 app.post('/gateway/divide', (req, res) => {
     console.log('divide-gateway')
     options = {
-        url: 'http://192.168.99.92:5003/service4/divide',
+        url: 'http://192.168.99.92:31122/service4/divide',
         method: 'POST',
         json: {
             param1: req.body['param1'],

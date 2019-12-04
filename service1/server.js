@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/service1/plus', (req, res) => {
     console.log('plus-server1')
     options = {
-        url: 'http://192.168.99.92:5001/service2/plus',
+        url: 'http://192.168.99.92:31120/service2/plus',
         method: 'POST',
         json: {
             param1: req.body['param1'],

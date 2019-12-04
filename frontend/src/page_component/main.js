@@ -25,7 +25,7 @@ export class main extends Component {
                 param2: parseInt(this.state.param2)
             };
             console.log(data)
-            const response = await fetch('http://192.168.99.92:5004/gateway/' + this.state.operation, {
+            const response = await fetch('http://192.168.99.92:31123/gateway/' + this.state.operation, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
