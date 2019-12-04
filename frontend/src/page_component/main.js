@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import blackpink from './blackpink.jpg'
+import { Dropdown } from 'react-bootstrap'
 export class main extends Component {
     constructor() {
         super();
         this.state = {
-            param1: null,
-            param2: null,
-            operation: null
+            param1: 0,
+            param2: 0,
+            operation: '',
+            result: 0
         };
     }
 
@@ -14,6 +15,13 @@ export class main extends Component {
         this.setState({
             [target.name]: target.value
         });
+    }
+
+    handleSelect = (event) => {
+        this.setState({
+            operation: event
+        });
+        console.log(this.state)
     }
 
     publish = async () => {
@@ -46,43 +54,52 @@ export class main extends Component {
     render() {
         return (
             <div>
-                <h1 style={{ textAlign: 'center' }}>Here are 4 buttons</h1>
-                <div style={{ textAlign: 'center' }}>
-                    <input
-                        type="text"
-                        name="param1"
-                        placeholder="Param1"
-                        value={this.state.param1}
-                        onChange={this.handleChange}
-                    />
+                <h1 style={{ textAlign: 'center', margin: '30px' }}>Kubernetes Demo</h1>
+                <div style={{ textAlign: 'center', padding: '50px' }}>
+                    <form>
+                        <div class="form-group">
+                            <label>Parameter 1</label>
+                            <input
+                                class="form-control"
+                                type="text"
+                                name="param1"
+                                placeholder="Param1"
+                                value={this.state.param1}
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                    </form>
 
-                    <input
-                        type="text"
-                        name="param2"
-                        placeholder="Param2"
-                        value={this.state.param2}
-                        onChange={this.handleChange}
-                    />
 
-                    <input
-                        type="text"
-                        name="operation"
-                        placeholder="operation"
-                        value={this.state.operation}
-                        onChange={this.handleChange}
-                    />
+                    <form>
+                        <div class="form-group">
+                            <label>Parameter 2</label>
+                            <input
+                                class="form-control"
+                                type="text"
+                                name="param2"
+                                placeholder="Param2"
+                                value={this.state.param2}
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                    </form>
+                    <Dropdown onSelect={this.handleSelect}>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            {this.state.operation == '' ? 'Select Operation' : this.state.operation}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item eventKey="plus">Plus</Dropdown.Item>
+                            <Dropdown.Item eventKey="minus">Minus</Dropdown.Item>
+                            <Dropdown.Item eventKey="multiply">Multiply</Dropdown.Item>
+                            <Dropdown.Item eventKey="divide">Divide</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
 
-                    <button value="Send" onClick={this.publish}>Publish</button>
+                    <button value="Send" onClick={this.publish} class="btn btn-primary" style={{ margin: '30px' }}>Publish</button>
+
+                    <p>Result = {this.state.result}</p>
                 </div>
-
-                {/* <h1 style={{textAlign:'center'}}>....and here is BLACKPINK</h1>
-
-                <div style={{display: "flex",justifyContent: 'center',alignItems: 'center'}}>
-                    <img src={blackpink} alt='' style={{height:'400px'}}/>
-                    
-                </div> */}
-
-
             </div>
 
         );
@@ -90,8 +107,5 @@ export class main extends Component {
     }
 
 }
-const buttonStyle = {
-    textAlign: "center",
-    margin: "10px"
-}
+
 export default main;
