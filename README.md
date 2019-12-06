@@ -1,7 +1,7 @@
 # Application Demo for Kubernetes with Docker
  
 ## Topology
-![Image of Yaktocat](https://i.ibb.co/vXSWkbs/Topology-new.png)
+![Topology](https://i.ibb.co/sJv8Gwf/Topology-new.png)
 
 ## Docker Image
 All images available in [Docker Hub](https://hub.docker.com/u/kantlove).
